@@ -1,54 +1,45 @@
-# React + TypeScript + Vite
+# 🌟 Site Web de l’Amicale Laïque de l’École Jules Verne
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Bienvenue sur le dépôt Git du site web de l’Amicale Laïque de l’école Jules Verne à Ligné (44) !  
+Ce projet vise à mettre en valeur les activités de l'association, promouvoir ses événements et proposer divers services aux familles (actualités, calendrier, location de matériel, etc.).
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Fonctionnalités
 
-## Expanding the ESLint configuration
+- Présentation de l'association et de ses objectifs
+- Affichage dynamique des événements à venir (carrousel)
+- Actualités et publications
+- Formulaire d’abonnement à la newsletter
+- Pages de contact et de location de matériel
+- Intégration du CMS [Strapi](https://strapi.io/) pour la gestion de contenu
+- Frontend développé avec [React](https://reactjs.org/) + [Tailwind CSS](https://tailwindcss.com/)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## 🛠️ Technologies utilisées
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- **Frontend** : React + Tailwind CSS
+- **Backend / CMS** : Strapi
+- **API** : REST (Strapi)
+- **Carrousel** : Swiper.js
+- **Hébergement** : à définir (par exemple Netlify, Vercel ou autre)
+- **Versioning** : Git + GitHub
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+## 📦 Installation
+
+### Prérequis
+
+- Node.js >= 18
+- Yarn ou npm
+- Accès à une instance Strapi (locale ou en ligne)
+
+### Étapes
+
+1. Clonez le projet :
+
+```bash
+git clone https://github.com/ton-utilisateur/nom-du-repo.git
+cd nom-du-repo

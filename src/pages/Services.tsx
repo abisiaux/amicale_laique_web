@@ -1,7 +1,6 @@
 import WaveCard from "@components/WaveCard.tsx";
 import type {Service} from "@models/Service.ts";
 import {getServices} from "@services/api.ts";
-import {API_URL} from "@services/config.ts";
 import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 
@@ -35,7 +34,7 @@ export default function Services() {
                 <WaveCard key={service.titre}
                           hasPointer
                           title={service.titre}
-                          imageUrl={`${API_URL}${service.thumbnail?.url}`}
+                          imageUrl={service.thumbnail?.url}
                           imageAlt={service.titre}
                           onClick={() => navigate(`/services/${service.documentId}`)} />
             ))}

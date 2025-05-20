@@ -2,7 +2,6 @@ import Pagination from "@components/Pagination.tsx";
 import WaveCard from "@components/WaveCard.tsx";
 import type {Actualite} from "@models/Actualite.ts";
 import {getActualites} from "@services/api.ts";
-import {API_URL} from "@services/config.ts";
 import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 
@@ -31,7 +30,7 @@ export default function Actualites() {
                           hasPointer
                           title={actualite.titre}
                           subtitle={`Publiée le ${new Date(actualite.publishedAt).toLocaleDateString("fr-FR")}`}
-                          imageUrl={`${API_URL}${actualite.thumbnail?.url}`}
+                          imageUrl={actualite.thumbnail?.url}
                           imageAlt={actualite.titre}
                           onClick={() => navigate(`/actualites/${actualite.documentId}`)} />
             ))}

@@ -1,7 +1,6 @@
 import WaveCard from "@components/WaveCard.tsx";
 import type {Membre} from "@models/Membre.ts";
 import {getMembres} from '@services/api';
-import {API_URL} from "@services/config.ts";
 import {useEffect, useState} from 'react';
 
 export default function APropos() {
@@ -19,7 +18,7 @@ export default function APropos() {
             <div className="flex flex-wrap justify-center gap-4 mb-8">
                 {members.map((member) => (
                     <WaveCard title={`${member.prenom} ${member.nom}`} subtitle={member.fonction}
-                              imageUrl={`${API_URL}${member.photo.url}`}
+                              imageUrl={member.photo.url}
                               imageAlt={`Photo de ${member.nom}  ${member.prenom}`}/>
                 ))}
             </div>

@@ -31,7 +31,7 @@ export default function ProcesVerbaux() {
                 Consultez régulièrement ces procès-verbaux pour suivre de près nos actions et découvrez comment vous
                 pouvez vous impliquer davantage dans la vie de l’école.
             </p>
-            <div className="flex flex-grow gap-4 flex-col md:flex-row justify-center mb-8">
+            <div className="flex flex-wrap justify-around flex-col md:flex-row gap-6 justify-self-center md:justify-self-auto">
                 {procesVerbaux.map((procesVerbal) => (
                     <WaveCard key={procesVerbal.titre}
                               hasPointer

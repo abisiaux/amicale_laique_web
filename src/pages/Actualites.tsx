@@ -24,7 +24,7 @@ export default function Actualites() {
             <h1 className="text-3xl font-bold mb-2">Actualités</h1>
             <hr className="mb-4"/>
 
-            <div className="flex gap-4 flex-col md:flex-row justify-center mb-8">
+            <div className="flex flex-wrap flex-col md:flex-row gap-6 justify-self-center">
             {actualites.map((actualite) => (
                 <WaveCard key={actualite.titre}
                           hasPointer

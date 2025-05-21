@@ -7,7 +7,6 @@
   --primary-color: #143D60;
   --secondary-color: #EB5B00;
   --tertary-color: #dfa01f;
-  --accent-color: #F25D07;
   --text-color: #F2F2F2;
   --swiper-navigation-color: var(--tertary-color);
   --swiper-pagination-color: var(--tertary-color);
@@ -35,6 +34,7 @@ body {
 .bg-tertiary {
     background-color: var(--tertary-color);
 }
+
 .text-primary {
     color: var(--primary-color);
 }
@@ -58,6 +58,7 @@ hr {
 
 a {
   color: var(--primary-color);
+  cursor: pointer;
   text-decoration: none;
 }
 
@@ -65,17 +66,9 @@ a:hover {
   color: var(--secondary-color);
 }
 
+
 header {
   background-color: white;
-}
-
-header .btn {
-  background-color: var(--accent-color);
-  color: white;
-}
-
-header .btn:hover {
-  background-color: var(--primary-color);
 }
 
 footer {
@@ -83,23 +76,23 @@ footer {
   color: var(--text-color);
 }
 
-footer a {
-  color: white;
-}
-
-footer a:hover {
-  color: var(--accent-color);
-}
-
 .card:hover {
   box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
 }
 
-input {
+input, select, textarea {
   background-color: white;
+  border: 1px solid var(--primary-color);
 }
 
-.test {
+.bg-carousel {
   background-color: rgba(255, 255, 255, 0.05);
+}
+
+.multi-truncate {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
 

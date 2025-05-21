@@ -15,9 +15,10 @@ export default function APropos() {
             <h1 className="text-3xl font-bold mb-2">Les membres du bureau</h1>
             <hr className="mb-4"/>
 
-            <div className="flex flex-wrap justify-center gap-4 mb-8">
+            <div className="flex flex-wrap justify-around flex-col md:flex-row gap-3 justify-self-center md:justify-self-auto mb-8">
                 {members.map((member) => (
                     <WaveCard title={`${member.prenom} ${member.nom}`} subtitle={member.fonction}
+                              imageHeight="h-80"
                               imageUrl={member.photo.url}
                               imageAlt={`Photo de ${member.nom}  ${member.prenom}`}/>
                 ))}

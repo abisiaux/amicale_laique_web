@@ -1,5 +1,5 @@
-import {Button} from "@components/Button.tsx";
 import type {Actualite} from "@models/Actualite.ts";
+import {ArrowCircleLeft} from "@phosphor-icons/react";
 import {getActualite} from "@services/api.ts";
 import {BlocksRenderer} from "@strapi/blocks-react-renderer";
 import {useEffect, useState} from "react";
@@ -23,17 +23,14 @@ function ActualiteDetail() {
         return;
     }
 
-    const returnActualitesButton = <Button label="Retourner aux actualités" onClick={() => navigate('/actualites')}
-                                           className="mb-4"/>
-
-
     return (
         <div className="container mx-auto px-8 py-8 md:px-24">
-            <div className="flex justify-center mb-4">
-                {returnActualitesButton}
-            </div>
 
-            <h1 className="text-3xl font-bold mb-2">{actualite.titre}</h1>
+            <a className="cursor-pointer" onClick={() => navigate('/actualites')}><ArrowCircleLeft
+                className="text-secondary inline mr-2 align-top" size={24}/>
+                Retourner aux actualités</a>
+
+            <h1 className="text-3xl font-bold mt-8 mb-2">{actualite.titre}</h1>
             <hr className="mb-4"/>
 
             {actualite.contenu && <BlocksRenderer content={actualite.contenu} blocks={{
@@ -45,8 +42,9 @@ function ActualiteDetail() {
             }}/>}
 
             <div className="flex justify-center mt-8">
-                {returnActualitesButton}
-            </div>
+                <a className="cursor-pointer mb-4" onClick={() => navigate('/actualites')}><ArrowCircleLeft
+                    className="text-secondary inline mr-2 align-top" size={24}/>
+                    Retourner aux actualités</a></div>
         </div>
     );
 }

@@ -17,7 +17,7 @@ export default function Services() {
 
     return (
         <div className="container mx-auto px-8 py-8 md:px-24">
-            <h1 className="text-3xl font-bold mb-2">Nos services</h1>
+            <h1 className="text-3xl font-bold mb-2">Services</h1>
             <hr className="mb-4"/>
 
             <p className="mb-8">
@@ -28,8 +28,8 @@ export default function Services() {
                 afin de soutenir la vie associative locale. N’hésitez pas à nous contacter pour connaître les conditions
                 de location, les disponibilités et les modalités de retrait.
             </p>
-            <div className="flex flex-grow gap-4 flex-col md:flex-row justify-center mb-8">
 
+            <div className="flex flex-wrap flex-col md:flex-row gap-6 justify-self-center">
             {services.map((service) => (
                 <WaveCard key={service.titre}
                           hasPointer

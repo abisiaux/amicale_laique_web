@@ -4,18 +4,19 @@ type WaveCardProps = {
     title: string,
     subtitle?: string,
     number?: number,
+    imageHeight?: string
     imageUrl?: string,
     imageAlt?: string,
     hasPointer?: boolean
 } & HTMLAttributes<HTMLDivElement>
 
-export default function WaveCard({title, subtitle, number, imageUrl, imageAlt, hasPointer = false, ...rest}: WaveCardProps) {
+export default function WaveCard({title, subtitle, number, imageHeight, imageUrl, imageAlt, hasPointer = false, ...rest}: WaveCardProps) {
     return (
         <div {...rest}
-             className={"card flex-1/2 max-w-xs rounded-xl overflow-hidden shadow-md text-center" + (hasPointer ? " cursor-pointer" : "") + " group"}>
+             className={"card flex-1/3 max-w-xs rounded-xl overflow-hidden shadow-md text-center" + (hasPointer ? " cursor-pointer" : "") + " group"}>
             <div className="relative">
-                {imageUrl && <img src={imageUrl} className="w-full h-48 md:64 object-cover" alt={imageAlt}/>}
-                {number && <div className="flex bg-primary text-white w-full h-48 object-cover text-6xl font-bold items-center justify-center">{number}</div>}
+                {imageUrl && <img src={imageUrl} className={"w-full object-cover " + (imageHeight ?? "h-48 md:h-64")} alt={imageAlt}/>}
+                {number && <div className="flex bg-primary text-white w-full h-42 object-cover text-6xl font-bold items-center justify-center">{number}</div>}
                 <div className="absolute -bottom-1 left-0 w-full">
                     <svg viewBox="0 0 500 150" preserveAspectRatio="none" className="w-full h-16">
                         <path
@@ -28,7 +29,7 @@ export default function WaveCard({title, subtitle, number, imageUrl, imageAlt, h
                 </div>
             </div>
             <div className="-mt-4 h-full bg-[#EB5B00] px-4 pb-6 pt-4 rounded-b-xl text-white">
-                <p className="text-lg font-bold whitespace-prewrap">{title}</p>
+                <p className="text-lg font-bold whitespace-break-spaces">{title}</p>
                 {subtitle && <p className="text-sm opacity-90">{subtitle}</p>}
             </div>
         </div>

@@ -6,6 +6,7 @@ import Home from '@pages/Home';
 import ProcesVerbaux from '@pages/ProcesVerbaux'
 import ServiceDetail from "@pages/ServiceDetail.tsx";
 import Services from "@pages/Services.tsx";
+import {Toaster} from 'react-hot-toast';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 
 import Layout from './layouts/Layout';
@@ -25,6 +26,7 @@ function App() {
                     <Route path="/actualites/:id" element={<ActualiteDetail />} />
                     <Route path="/services/:id" element={<ServiceDetail />} />
                 </Routes>
+                <div><Toaster position="bottom-center" reverseOrder={false}/></div>
             </Layout>
         </Router>
     )

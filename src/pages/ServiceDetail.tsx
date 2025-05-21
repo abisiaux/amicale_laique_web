@@ -1,7 +1,7 @@
 import { Button } from '@components/Button.tsx';
 import type { Service } from '@models/Service.ts';
 import { ArrowCircleLeft } from '@phosphor-icons/react';
-import { getService } from '@services/api.ts';
+import { getService } from '@services/strapi.ts';
 import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';

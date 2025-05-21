@@ -2,13 +2,14 @@ import { Button } from '@components/Button.tsx';
 import EventCarousel from '@components/EventCarousel.tsx';
 import WaveCard from '@components/WaveCard.tsx';
 import { Envelope } from '@phosphor-icons/react';
-import { getProchainsEvenements } from '@services/api';
 import {
   ADHESION_URL,
   NB_AMICALISTES,
   NB_EVENTS,
   NB_STUDENTS,
 } from '@services/config.ts';
+import { sendToHubSpot } from '@services/hubspot.ts';
+import { getProchainsEvenements } from '@services/strapi.ts';
 import { type FormEvent, useEffect, useRef, useState } from 'react';
 import toast from 'react-hot-toast';
 
@@ -22,10 +23,25 @@ export default function Home() {
     getProchainsEvenements().then((data) => setEvenements(data || []));
   }, []);
 
-  const handleNewsletterSubmit = (e: FormEvent) => {
+  const handleNewsletterSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    toast.success('Merci de vous être inscrit à notre newsletter !');
-    setHasSubscribeNewsletter(true);
+    const emailInput = e.currentTarget.querySelector(
+      'input[type="email"]'
+    ) as HTMLInputElement;
+    const email = emailInput?.value;
+
+    if (email) {
+      try {
+        await sendToHubSpot(email); // Envoi des données à HubSpot
+        toast.success('Merci de vous être inscrit à notre newsletter !');
+        setHasSubscribeNewsletter(true);
+      } catch (error) {
+        toast.error(
+          "Une erreur est survenue lors de l'inscription. Veuillez réessayer."
+        );
+        console.error('Erreur HubSpot:', error);
+      }
+    }
   };
 
   return (

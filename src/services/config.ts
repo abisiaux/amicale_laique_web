@@ -14,6 +14,10 @@ export const HELLOASSO_URL =
 export const ADHESION_URL =
   'https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAN__tJDWX1UQVBTRUIwS01EMTRFMDc2NVpUOU9KMjJaRy4u';
 
+export const HUBSPOT_API_KEY = import.meta.env.VITE_HUBSPOT_API_KEY;
+export const HUBSPOT_FORM_ID = import.meta.env.VITE_HUBSPOT_FORM_ID;
+export const HUBSPOT_PORTAL_ID = import.meta.env.VITE_HUBSPOT_PORTAL_ID;
+
 export const NB_ACTUALITE_PER_PAGE = 6;
 export const NB_STUDENTS = 352;
 export const NB_EVENTS = 10;

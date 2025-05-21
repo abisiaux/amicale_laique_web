@@ -120,7 +120,7 @@ export default function Contact() {
             <div className="flex mb-4 flex-col xl:flex-row gap-4">
               <div className="w-full xl:w-1/3">
                 <label htmlFor="childClass" className="block text-md font-bold">
-                  Classe de votre enfant :
+                  Classe :
                 </label>
                 <input
                   {...register('childClass')}
@@ -148,7 +148,7 @@ export default function Contact() {
             </div>
             <div className="mb-4">
               <label htmlFor="subject" className="block text-md font-bold">
-                Sujet :
+                Objet :
               </label>
 
               <select
@@ -159,13 +159,19 @@ export default function Contact() {
                 className="px-4 py-2 rounded-md w-full"
               >
                 <option disabled selected value="">
-                  Choisir une catégorie
+                  Choisir un objet
                 </option>
-                <option value="commande">Une commande</option>
-                <option value="service">Une demande de réservation</option>
-                <option value="evenement">Un événement</option>
-                <option value="association">L'association</option>
-                <option value="autre">Autre</option>
+                <option value="commande">
+                  Question par rapport à une commande
+                </option>
+                <option value="evenement">
+                  Question sur l'organisation d'un événement
+                </option>
+                <option value="association">Question sur l'association</option>
+                <option value="service">
+                  Demande de réservation de service
+                </option>
+                <option value="autre">Autre demande</option>
               </select>
             </div>
             <div className="mb-4">

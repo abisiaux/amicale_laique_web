@@ -2,7 +2,6 @@ import WaveCard from '@components/WaveCard.tsx';
 import type { Membre } from '@models/Membre.ts';
 import { getMembres } from '@services/strapi.ts';
 import { useEffect, useState } from 'react';
-import { API_URL } from '@services/config.ts';
 
 export default function APropos() {
   const [members, setMembers] = useState<Membre[]>([]);

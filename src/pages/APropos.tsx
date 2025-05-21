@@ -18,6 +18,7 @@ export default function APropos() {
       <div className="flex flex-wrap justify-around flex-col md:flex-row gap-3 justify-self-center md:justify-self-auto mb-8">
         {members.map((member) => (
           <WaveCard
+            key={member.nom}
             title={`${member.prenom} ${member.nom}`}
             subtitle={member.fonction}
             imageHeight="h-80"

@@ -128,7 +128,7 @@ export default function Contact() {
                   name="childClass"
                   type="text"
                   className="px-4 py-2 rounded-md w-full"
-                  placeholder="Classe de votre enfant"
+                  placeholder="Classe de l'enfant"
                 />
               </div>
               <div className="w-full xl:w-2/3">

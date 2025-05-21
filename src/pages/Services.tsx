@@ -31,7 +31,7 @@ export default function Services() {
         disponibilités et les modalités de retrait.
       </p>
 
-      <div className="flex flex-wrap justify-around flex-col md:flex-row gap-3 justify-self-center md:justify-self-auto mb-8">
+      <div className="flex flex-wrap justify-center gap-6 mb-8">
         {services.map((service) => (
           <WaveCard
             key={service.titre}

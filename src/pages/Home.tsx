@@ -127,18 +127,10 @@ export default function Home() {
             Les chiffres de l'année
           </h2>
           <hr className="mb-6" />
-          <div className="flex flex-wrap justify-around flex-col md:flex-row gap-6 justify-self-center md:justify-self-auto">
-            <WaveCard
-              nbCardsPerRow={3}
-              title="Amicalistes engagés"
-              number={NB_AMICALISTES}
-            />
-            <WaveCard
-              nbCardsPerRow={3}
-              title="Evénements organisés"
-              number={NB_EVENTS}
-            />
-            <WaveCard nbCardsPerRow={3} title="Enfants" number={NB_STUDENTS} />
+          <div className="flex flex-wrap justify-center gap-6 mb-8">
+            <WaveCard title="Amicalistes engagés" number={NB_AMICALISTES} />
+            <WaveCard title="Evénements organisés" number={NB_EVENTS} />
+            <WaveCard title="Enfants" number={NB_STUDENTS} />
           </div>
         </section>
       </div>

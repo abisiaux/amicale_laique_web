@@ -23,7 +23,7 @@ export default function Actualites() {
       <h1 className="text-3xl font-bold mb-2">Actualités</h1>
       <hr className="mb-4" />
 
-      <div className="flex flex-wrap justify-around flex-col md:flex-row gap-3 justify-self-center md:justify-self-auto mb-8">
+      <div className="flex flex-wrap justify-center gap-6 mb-8">
         {actualites.map((actualite) => (
           <WaveCard
             key={actualite.titre}

@@ -2,6 +2,7 @@ import WaveCard from '@components/WaveCard.tsx';
 import type { Membre } from '@models/Membre.ts';
 import { getMembres } from '@services/strapi.ts';
 import { useEffect, useState } from 'react';
+import { API_URL } from '@services/config.ts';
 
 export default function APropos() {
   const [members, setMembers] = useState<Membre[]>([]);
@@ -15,13 +16,13 @@ export default function APropos() {
       <h1 className="text-3xl font-bold mb-2">Les membres du bureau</h1>
       <hr className="mb-4" />
 
-      <div className="flex flex-wrap justify-around flex-col md:flex-row gap-3 justify-self-center md:justify-self-auto mb-8">
+      <div className="flex flex-wrap justify-center gap-6 mb-8">
         {members.map((member) => (
           <WaveCard
             key={member.nom}
             title={`${member.prenom} ${member.nom}`}
             subtitle={member.fonction}
-            imageHeight="h-80"
+            imageHeight="h-64"
             imageUrl={member.photo.url}
             imageAlt={`Photo de ${member.nom}  ${member.prenom}`}
           />

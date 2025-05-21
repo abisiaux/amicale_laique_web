@@ -8,7 +8,6 @@ type WaveCardProps = {
   imageUrl?: string;
   imageAlt?: string;
   hasPointer?: boolean;
-  nbCardsPerRow?: number;
 } & HTMLAttributes<HTMLDivElement>;
 
 export default function WaveCard({
@@ -19,14 +18,13 @@ export default function WaveCard({
   imageUrl,
   imageAlt,
   hasPointer = false,
-  nbCardsPerRow = 4,
   ...rest
 }: WaveCardProps) {
   return (
     <div
       {...rest}
       className={
-        `card flex-1/${nbCardsPerRow} max-w-xs rounded-xl overflow-hidden shadow-md text-center` +
+        `card w-full sm:w-1/2 md:w-1/4 lg:w-1/5 max-w-sm rounded-xl overflow-hidden shadow-md text-center` +
         (hasPointer ? ' cursor-pointer' : '') +
         ' group'
       }
@@ -35,7 +33,7 @@ export default function WaveCard({
         {imageUrl && (
           <img
             src={imageUrl}
-            className={'w-full object-cover ' + (imageHeight ?? 'h-48 md:h-64')}
+            className={'w-full object-cover ' + (imageHeight ?? 'h-48')}
             alt={imageAlt}
           />
         )}

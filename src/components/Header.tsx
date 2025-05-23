@@ -1,12 +1,12 @@
-import logo from '@assets/logo.jpg';
-import { ADHESION_URL } from '@services/config.ts';
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import logo from '@assets/logo.jpg'
+import { ADHESION_URL } from '@services/config.ts'
+import { useState } from 'react'
+import { Link } from 'react-router-dom'
 
-import { Button } from './Button.tsx';
+import { Button } from './Button.tsx'
 
 export default function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
     <header className="bg-white sticky top-0 z-50">
@@ -36,7 +36,7 @@ export default function Header() {
               </li>
 
               <li>
-                <Link to="/services">Services</Link>
+                <Link to="/services">Locations</Link>
               </li>
 
               <li>
@@ -105,7 +105,7 @@ export default function Header() {
                   </li>
                   <li>
                     <Link to="/services" onClick={() => setIsMenuOpen(false)}>
-                      Services
+                      Locations
                     </Link>
                   </li>
                   <li>
@@ -120,5 +120,5 @@ export default function Header() {
         </div>
       </div>
     </header>
-  );
+  )
 }

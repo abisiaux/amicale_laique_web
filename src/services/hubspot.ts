@@ -1,6 +1,6 @@
-import axios from 'axios';
+import axios from 'axios'
 
-import { HUBSPOT_API_KEY, HUBSPOT_FORM_ID, HUBSPOT_PORTAL_ID } from './config';
+import { HUBSPOT_API_KEY, HUBSPOT_FORM_ID, HUBSPOT_PORTAL_ID } from './config'
 
 export const sendToHubSpot = async (email: string) => {
   try {
@@ -20,10 +20,10 @@ export const sendToHubSpot = async (email: string) => {
           Authorization: `Bearer ${HUBSPOT_API_KEY}`,
         },
       }
-    );
-    return response.data;
+    )
+    return response.data
   } catch (error) {
-    console.error("Erreur lors de l'envoi à HubSpot:", error);
-    throw error;
+    console.error('Erreur lors de l\'envoi à HubSpot:', error)
+    throw error
   }
-};
+}

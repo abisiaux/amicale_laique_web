@@ -1,14 +1,14 @@
-import type { HTMLAttributes } from 'react';
+import type { HTMLAttributes } from 'react'
 
 type WaveCardProps = {
-  title: string;
-  subtitle?: string;
-  number?: number;
-  imageHeight?: string;
-  imageUrl?: string;
-  imageAlt?: string;
-  hasPointer?: boolean;
-} & HTMLAttributes<HTMLDivElement>;
+  title: string
+  subtitle?: string
+  number?: number
+  imageHeight?: string
+  imageUrl?: string
+  imageAlt?: string
+  hasPointer?: boolean
+} & HTMLAttributes<HTMLDivElement>
 
 export default function WaveCard({
   title,
@@ -24,7 +24,7 @@ export default function WaveCard({
     <div
       {...rest}
       className={
-        `card w-full sm:w-1/2 md:w-1/4 lg:w-1/5 max-w-sm rounded-xl overflow-hidden shadow-md text-center` +
+        'card w-full sm:w-1/2 md:w-1/4 lg:w-1/5 max-w-sm rounded-xl overflow-hidden shadow-md text-center' +
         (hasPointer ? ' cursor-pointer' : '') +
         ' group'
       }
@@ -62,5 +62,5 @@ export default function WaveCard({
         {subtitle && <p className="text-sm opacity-90">{subtitle}</p>}
       </div>
     </div>
-  );
+  )
 }

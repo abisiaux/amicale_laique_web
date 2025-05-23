@@ -1,41 +1,41 @@
-import { Button } from '@components/Button.tsx';
-import { Email } from '@components/Email.tsx';
-import Plunk from '@plunk/node';
-import { render } from '@react-email/components';
+import { Button } from '@components/Button.tsx'
+import { Email } from '@components/Email.tsx'
+import Plunk from '@plunk/node'
+import { render } from '@react-email/components'
 import {
   EMAIL_ADDRESS,
   PLUNK_API_KEY,
   RECAPTCHA_KEY,
-} from '@services/config.ts';
-import { useRef } from 'react';
-import ReCAPTCHA from 'react-google-recaptcha';
-import { type SubmitHandler, useForm } from 'react-hook-form';
-import { toast } from 'react-hot-toast';
-import { useSearchParams } from 'react-router-dom';
+} from '@services/config.ts'
+import { useRef } from 'react'
+import ReCAPTCHA from 'react-google-recaptcha'
+import { type SubmitHandler, useForm } from 'react-hook-form'
+import { toast } from 'react-hot-toast'
+import { useSearchParams } from 'react-router-dom'
 
 type FormValues = {
-  name: string;
-  surname: string;
-  childClass: string;
-  email: string;
-  subject: string;
-  message: string;
-};
+  name: string
+  surname: string
+  childClass: string
+  email: string
+  subject: string
+  message: string
+}
 
 export default function Contact() {
-  const [searchParams] = useSearchParams();
+  const [searchParams] = useSearchParams()
   const { register, handleSubmit, reset } = useForm<FormValues>({
     defaultValues: {
       subject: searchParams.get('subject') || '',
-      message: searchParams.get('service')
-        ? `Service : ${searchParams.get('service')}`
+      message: searchParams.get('location')
+        ? `Demande de location pour : ${searchParams.get('location')}`
         : '',
     },
-  });
+  })
 
-  const contactSubmitButton = useRef<HTMLInputElement>(null);
-  const recaptcha = useRef<ReCAPTCHA>(null);
-  const plunk = new Plunk(PLUNK_API_KEY);
+  const contactSubmitButton = useRef<HTMLInputElement>(null)
+  const recaptcha = useRef<ReCAPTCHA>(null)
+  const plunk = new Plunk(PLUNK_API_KEY)
 
   const onSubmit: SubmitHandler<FormValues> = async ({
     name,
@@ -46,8 +46,8 @@ export default function Contact() {
     message,
   }: FormValues) => {
     if (!recaptcha.current?.getValue()) {
-      toast.error('Veuillez résoudre le captcha');
-      return;
+      toast.error('Veuillez résoudre le captcha')
+      return
     }
 
     const emailHtml = await render(
@@ -60,7 +60,7 @@ export default function Contact() {
         }}
         message={message}
       />
-    );
+    )
 
     plunk.emails
       .send({
@@ -69,15 +69,13 @@ export default function Contact() {
         body: emailHtml,
       })
       .then(() => {
-        reset();
-        toast.success('Votre message a été envoyé !');
+        reset()
+        toast.success('Votre message a été envoyé !')
       })
       .catch(() => {
-        toast.error(
-          "Une erreur est survenue lors de l'envoi de votre message."
-        );
-      });
-  };
+        toast.error('Une erreur est survenue lors de l\'envoi de votre message.')
+      })
+  }
 
   return (
     <div className="container mx-auto px-8 py-8 md:px-24">
@@ -168,8 +166,8 @@ export default function Contact() {
                   Question sur l'organisation d'un événement
                 </option>
                 <option value="association">Question sur l'association</option>
-                <option value="service">
-                  Demande de réservation de service
+                <option value="location">
+                  Demande de location
                 </option>
                 <option value="autre">Autre demande</option>
               </select>
@@ -211,7 +209,7 @@ export default function Contact() {
             <iframe
               className="mx-auto"
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5400.47419743896!2d-1.3807502147653818!3d47.4073163274006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4805ff1b8e7b1507%3A0x99096fa290fe8689!2s%C3%89cole%20Publique%20Jules%20Verne!5e0!3m2!1sfr!2sfr!4v1747340794438!5m2!1sfr!2sfr"
-              width="400"
+              width="360"
               height="300"
               allowFullScreen
               loading="lazy"
@@ -221,5 +219,5 @@ export default function Contact() {
         </div>
       </div>
     </div>
-  );
+  )
 }

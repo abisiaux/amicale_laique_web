@@ -1,13 +1,13 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 @import 'swiper/css';
 @import 'swiper/css/navigation';
 @import 'swiper/css/pagination';
 
 @theme {
-  --primary-color: #143D60;
-  --secondary-color: #EB5B00;
+  --primary-color: #143d60;
+  --secondary-color: #eb5b00;
   --tertary-color: #dfa01f;
-  --text-color: #F2F2F2;
+  --text-color: #f2f2f2;
   --swiper-navigation-color: var(--tertary-color);
   --swiper-pagination-color: var(--tertary-color);
 }
@@ -16,7 +16,6 @@
   margin: 0 auto;
 }
 
-
 body {
   background-color: white;
   color: black;
@@ -24,19 +23,19 @@ body {
 }
 
 .bg-primary {
-    background-color: var(--primary-color);
+  background-color: var(--primary-color);
 }
 
 .bg-secondary {
-    background-color: var(--secondary-color);
+  background-color: var(--secondary-color);
 }
 
 .bg-tertiary {
-    background-color: var(--tertary-color);
+  background-color: var(--tertary-color);
 }
 
 .text-primary {
-    color: var(--primary-color);
+  color: var(--primary-color);
 }
 
 .text-secondary {
@@ -47,7 +46,9 @@ body {
   color: var(--tertary-color);
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   font-family: 'Roboto', sans-serif;
   color: var(--primary-color);
 }
@@ -66,7 +67,6 @@ a:hover {
   color: var(--secondary-color);
 }
 
-
 header {
   background-color: white;
 }
@@ -80,7 +80,9 @@ footer {
   box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
 }
 
-input, select, textarea {
+input,
+select,
+textarea {
   background-color: white;
   border: 1px solid var(--primary-color);
 }
@@ -95,4 +97,3 @@ input, select, textarea {
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
 }
-

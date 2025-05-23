@@ -1,48 +1,48 @@
-import { Button } from '@components/Button.tsx';
-import EventCarousel from '@components/EventCarousel.tsx';
-import WaveCard from '@components/WaveCard.tsx';
-import { Envelope } from '@phosphor-icons/react';
+import { Button } from '@components/Button.tsx'
+import EventCarousel from '@components/EventCarousel.tsx'
+import WaveCard from '@components/WaveCard.tsx'
+import { Envelope } from '@phosphor-icons/react'
 import {
   ADHESION_URL,
   NB_AMICALISTES,
   NB_EVENTS,
   NB_STUDENTS,
-} from '@services/config.ts';
-import { sendToHubSpot } from '@services/hubspot.ts';
-import { getProchainsEvenements } from '@services/strapi.ts';
-import { type FormEvent, useEffect, useRef, useState } from 'react';
-import toast from 'react-hot-toast';
+} from '@services/config.ts'
+import { sendToHubSpot } from '@services/hubspot.ts'
+import { getProchainsEvenements } from '@services/strapi.ts'
+import { type FormEvent, useEffect, useRef, useState } from 'react'
+import toast from 'react-hot-toast'
 
 export default function Home() {
-  const [evenements, setEvenements] = useState([]);
-  const [hasSubscribeNewsletter, setHasSubscribeNewsletter] = useState(false);
+  const [evenements, setEvenements] = useState([])
+  const [hasSubscribeNewsletter, setHasSubscribeNewsletter] = useState(false)
 
-  const newsletterSubmitButton = useRef<HTMLInputElement>(null);
+  const newsletterSubmitButton = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
-    getProchainsEvenements().then((data) => setEvenements(data || []));
-  }, []);
+    getProchainsEvenements().then((data) => setEvenements(data || []))
+  }, [])
 
   const handleNewsletterSubmit = async (e: FormEvent) => {
-    e.preventDefault();
+    e.preventDefault()
     const emailInput = e.currentTarget.querySelector(
       'input[type="email"]'
-    ) as HTMLInputElement;
-    const email = emailInput?.value;
+    ) as HTMLInputElement
+    const email = emailInput?.value
 
     if (email) {
       try {
-        await sendToHubSpot(email); // Envoi des données à HubSpot
-        toast.success('Merci de vous être inscrit à notre newsletter !');
-        setHasSubscribeNewsletter(true);
+        await sendToHubSpot(email) // Envoi des données à HubSpot
+        toast.success('Merci de vous être inscrit à notre newsletter !')
+        setHasSubscribeNewsletter(true)
       } catch (error) {
         toast.error(
-          "Une erreur est survenue lors de l'inscription. Veuillez réessayer."
-        );
-        console.error('Erreur HubSpot:', error);
+          'Une erreur est survenue lors de l\'inscription. Veuillez réessayer.'
+        )
+        console.error('Erreur HubSpot:', error)
       }
     }
-  };
+  }
 
   return (
     <>
@@ -135,5 +135,5 @@ export default function Home() {
         </section>
       </div>
     </>
-  );
+  )
 }

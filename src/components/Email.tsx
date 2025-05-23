@@ -5,17 +5,17 @@ import {
   Html,
   Section,
   Text,
-} from '@react-email/components';
+} from '@react-email/components'
 
 type EmailProps = {
   sender: {
-    name: string;
-    surname: string;
-    childClass: string;
-    email: string;
-  };
-  message: string;
-};
+    name: string
+    surname: string
+    childClass: string
+    email: string
+  }
+  message: string
+}
 
 export function Email({ sender, message }: EmailProps) {
   return (
@@ -72,5 +72,5 @@ export function Email({ sender, message }: EmailProps) {
         </Container>
       </Body>
     </Html>
-  );
+  )
 }

@@ -1,6 +1,6 @@
-import type { HTMLAttributes } from 'react';
+import type { HTMLAttributes } from 'react'
 
-type ButtonProps = HTMLAttributes<HTMLAnchorElement> & { label: string };
+type ButtonProps = HTMLAttributes<HTMLAnchorElement> & { label: string }
 
 export function Button({ label, ...props }: ButtonProps) {
   return (
@@ -13,5 +13,5 @@ export function Button({ label, ...props }: ButtonProps) {
         {label}{' '}
       </span>
     </a>
-  );
+  )
 }

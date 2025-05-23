@@ -1,16 +1,16 @@
-import { Button } from '@components/Button.tsx';
-import type { Evenement } from '@models/Evenement.ts';
-import { Calendar, MapPin } from '@phosphor-icons/react';
-import { useNavigate } from 'react-router-dom';
-import { Navigation, Pagination } from 'swiper/modules';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Button } from '@components/Button.tsx'
+import type { Evenement } from '@models/Evenement.ts'
+import { Calendar, MapPin } from '@phosphor-icons/react'
+import { useNavigate } from 'react-router-dom'
+import { Navigation, Pagination } from 'swiper/modules'
+import { Swiper, SwiperSlide } from 'swiper/react'
 
 type Props = {
-  events: Evenement[];
-};
+  events: Evenement[]
+}
 
 export default function EventCarousel({ events }: Props) {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   return (
     <Swiper
@@ -90,5 +90,5 @@ export default function EventCarousel({ events }: Props) {
         </SwiperSlide>
       ))}
     </Swiper>
-  );
+  )
 }

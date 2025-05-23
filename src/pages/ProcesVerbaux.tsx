@@ -2,7 +2,6 @@ import meetingLogo from '@assets/meeting.svg'
 import {Spinner} from '@components/Spinner.tsx'
 import WaveCard from '@components/WaveCard.tsx'
 import type {ProcesVerbal} from '@models/ProcesVerbal.ts'
-import {API_URL} from '@services/config.ts'
 import {getProcesVerbaux} from '@services/strapi.ts'
 import {useEffect, useState} from 'react'
 
@@ -47,7 +46,7 @@ export default function ProcesVerbaux() {
                             imageAlt={`${procesVerbal.titre} du ${new Date(procesVerbal.date).toLocaleDateString('fr-FR')}`}
                             onClick={() =>
                                 window.open(
-                                    `${API_URL}${procesVerbal.compte_rendu.url}`,
+                                    procesVerbal.compte_rendu.url,
                                     '_blank'
                                 )
                             }

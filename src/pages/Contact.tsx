@@ -209,7 +209,7 @@ export default function Contact() {
             <iframe
               className="mx-auto"
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5400.47419743896!2d-1.3807502147653818!3d47.4073163274006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4805ff1b8e7b1507%3A0x99096fa290fe8689!2s%C3%89cole%20Publique%20Jules%20Verne!5e0!3m2!1sfr!2sfr!4v1747340794438!5m2!1sfr!2sfr"
-              width="360"
+              width="300"
               height="300"
               allowFullScreen
               loading="lazy"

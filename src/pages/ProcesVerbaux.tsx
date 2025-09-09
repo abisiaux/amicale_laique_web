@@ -1,4 +1,4 @@
-import meetingLogo from '@assets/meeting.svg'
+import meetingLogo from '@assets/meeting.webp'
 import {Spinner} from '@components/Spinner.tsx'
 import WaveCard from '@components/WaveCard.tsx'
 import type {ProcesVerbal} from '@models/ProcesVerbal.ts'

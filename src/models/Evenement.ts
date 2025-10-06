@@ -7,4 +7,6 @@ export type Evenement = {
   lieu: string
   thumbnail: { url: string }
   actualite: { documentId: string }
+  titre_bouton?: string
+  lien_bouton?: string
 }

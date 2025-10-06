@@ -12,6 +12,11 @@ type Props = {
 export default function EventCarousel({ events }: Props) {
   const navigate = useNavigate()
 
+  const hasTime = (date: Date) => date.getHours() !== 0 ||
+    date.getMinutes() !== 0 ||
+    date.getSeconds()!== 0 ||
+    date.getMilliseconds() !== 0
+
   return (
     <Swiper
       modules={[Navigation, Pagination]}
@@ -22,75 +27,86 @@ export default function EventCarousel({ events }: Props) {
       className="h-full"
       autoplay={true}
     >
-      {events.map((event) => (
-        <SwiperSlide key={event.id} className="h-full">
-          <div className="flex h-full ">
-            <div className="flex flex-grow bg-carousel rounded-2xl mx-10 lg:mx-20 my-10">
-              <div className="hidden lg:flex items-center">
-                <img
-                  src={event.thumbnail.url}
-                  alt={event.titre}
-                  className="h-full pl-5 py-5"
-                />
-              </div>
-              <div className="flex-1 flex-grow py-2 lg:py-5 px-2 lg:px-5 text-primary items-center">
-                <div className="h-full px-2 py-2">
-                  <h2 className="text-center lg:text-left text-2xl lg:text-4xl font-semibold mb-2 text-secondary">
-                    {event.titre}
-                  </h2>
+      {events.map((event) => {
 
-                  <div className="flex flex-col xl:flex-row gap-2 mb-4 items-center lg:items-start">
-                    <div className="flex">
-                      <Calendar
-                        className="inline text-tertiary pr-2"
-                        size={24}
-                      />{' '}
-                      <span className="align-top text-white">
-                        {' '}
-                        {new Date(event.date_heure_debut).toLocaleString(
-                          'fr-FR',
-                          {dateStyle: 'short', timeStyle: 'short'}
-                        )}
-                      </span>
-                      {event.date_heure_fin && (
+        const startDate = new Date(event.date_heure_debut)
+        const endDate = new Date(event.date_heure_fin)
+
+        return (
+          <SwiperSlide key={event.id} className="h-full">
+            <div className="flex h-full ">
+              <div className="flex flex-grow bg-carousel rounded-2xl mx-10 lg:mx-20 my-10">
+                <div className="hidden lg:flex items-center">
+                  <img
+                    src={event.thumbnail.url}
+                    alt={event.titre}
+                    className="h-full pl-5 py-5"
+                  />
+                </div>
+                <div className="flex-1 flex-grow py-2 lg:py-5 px-2 lg:px-5 text-primary items-center">
+                  <div className="h-full px-2 py-2">
+                    <h2 className="text-center lg:text-left text-2xl lg:text-4xl font-semibold mb-2 text-secondary">
+                      {event.titre}
+                    </h2>
+
+                    <div className="flex flex-col xl:flex-row gap-2 mb-4 items-center lg:items-start">
+                      <div className="flex">
+                        <Calendar
+                          className="inline text-tertiary pr-2"
+                          size={24}
+                        />{' '}
                         <span className="align-top text-white">
-                          {' '}
-                          -{' '}
-                          {new Date(event.date_heure_fin).toLocaleTimeString(
+                        {' '}
+                          {startDate.toLocaleString(
                             'fr-FR',
-                            {timeStyle: 'short'}
+                            { dateStyle: 'short', timeStyle: hasTime(startDate) ? 'short' : undefined },
                           )}
+                      </span>
+                        {event.date_heure_fin && (
+                          <span className="align-top text-white">
+                          {' '}
+                            -{' '}
+                            {endDate.toLocaleTimeString(
+                              'fr-FR',
+                              { timeStyle: hasTime(endDate) ? 'short' : undefined },
+                            )}
                         </span>
+                        )}
+                      </div>
+                      <div className="flex">
+                        <MapPin className="inline text-tertiary pr-2" size={24} />{' '}
+                        <span className="align-top text-white">{event.lieu}</span>
+                      </div>
+                    </div>
+
+                    <div className="hidden md:block text-center lg:text-left">
+                      <p className="md:max-h-20 text-sm mb-2 leading-relaxed text-white multi-truncate">
+                        {event.description}
+                      </p>
+                    </div>
+
+                    <div className="flex justify-center lg:justify-start">
+                      {(event.actualite || event.lien_bouton) && (
+                        <Button
+                          label={event.titre_bouton || 'En savoir plus'}
+                          onClick={() => {
+                            if (event.lien_bouton) {
+                              navigate(event.lien_bouton)
+                            } else if (event.actualite) {
+                              navigate(`/actualites/${event.actualite.documentId}`)
+                            }
+                          }
+                          }
+                        />
                       )}
                     </div>
-                    <div className="flex">
-                      <MapPin className="inline text-tertiary pr-2" size={24} />{' '}
-                      <span className="align-top text-white">{event.lieu}</span>
-                    </div>
-                  </div>
-
-                  <div className="hidden md:block text-center lg:text-left">
-                    <p className="md:max-h-20 text-sm mb-2 leading-relaxed text-white multi-truncate">
-                      {event.description}
-                    </p>
-                  </div>
-
-                  <div className="flex justify-center lg:justify-start">
-                    {event.actualite && (
-                      <Button
-                        label="En savoir plus"
-                        onClick={() =>
-                          navigate(`/actualites/${event.actualite.documentId}`)
-                        }
-                      />
-                    )}
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </SwiperSlide>
-      ))}
+          </SwiperSlide>
+        )
+      })}
     </Swiper>
   )
 }

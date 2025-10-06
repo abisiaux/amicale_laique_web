@@ -48,7 +48,8 @@ export default function EventCarousel({ events }: Props) {
                       <span className="align-top text-white">
                         {' '}
                         {new Date(event.date_heure_debut).toLocaleString(
-                          'fr-FR'
+                          'fr-FR',
+                          {timeStyle: 'short'}
                         )}
                       </span>
                       {event.date_heure_fin && (
@@ -56,7 +57,8 @@ export default function EventCarousel({ events }: Props) {
                           {' '}
                           -{' '}
                           {new Date(event.date_heure_fin).toLocaleTimeString(
-                            'fr-FR'
+                            'fr-FR',
+                            {timeStyle: 'short'}
                           )}
                         </span>
                       )}

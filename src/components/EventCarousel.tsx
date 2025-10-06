@@ -17,6 +17,11 @@ export default function EventCarousel({ events }: Props) {
     date.getSeconds()!== 0 ||
     date.getMilliseconds() !== 0
 
+  const isSameDay = (start: Date, end: Date) =>
+    start.getFullYear() === end.getFullYear() &&
+    start.getMonth() === end.getMonth() &&
+    start.getDate() === end.getDate()
+
   return (
     <Swiper
       modules={[Navigation, Pagination]}
@@ -65,9 +70,9 @@ export default function EventCarousel({ events }: Props) {
                         {event.date_heure_fin && (
                           <span className="align-top text-white">
                           {' - '}
-                            {endDate.toLocaleTimeString(
+                            {endDate.toLocaleString(
                               'fr-FR',
-                              { dateStyle: 'short', timeStyle: hasTime(endDate) ? 'short' : undefined },
+                              { dateStyle: !isSameDay(startDate, endDate) ? 'short' : undefined, timeStyle: hasTime(endDate) ? 'short' : undefined },
                             )}
                         </span>
                         )}

@@ -49,7 +49,7 @@ export default function EventCarousel({ events }: Props) {
                         {' '}
                         {new Date(event.date_heure_debut).toLocaleString(
                           'fr-FR',
-                          {timeStyle: 'short'}
+                          {dateStyle: 'short', timeStyle: 'short'}
                         )}
                       </span>
                       {event.date_heure_fin && (

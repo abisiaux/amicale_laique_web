@@ -43,7 +43,7 @@ export const getProchainsEvenements = async () => {
 
 export const getMembres = async () => {
   try {
-    const response = await strapi.get('/api/membres?sort=id:asc&populate[photo][fields]=url')
+    const response = await strapi.get('/api/membres?sort=position:asc&populate[photo][fields]=url')
     return response.data.data
   } catch (error) {
     handleError(error)

@@ -19,6 +19,8 @@ export const HUBSPOT_FORM_ID = import.meta.env.VITE_HUBSPOT_FORM_ID
 export const HUBSPOT_PORTAL_ID = import.meta.env.VITE_HUBSPOT_PORTAL_ID
 
 export const NB_ACTUALITE_PER_PAGE = 6
-export const NB_STUDENTS = 320
-export const NB_EVENTS = 10
-export const NB_AMICALISTES = 12
+export const NB_KIDS = import.meta.env.VITE_NB_KIDS || 320
+export const NB_EVENTS = import.meta.env.VITE_NB_EVENTS || 13
+export const NB_AMICALISTES = import.meta.env.VITE_NB_AMICALISTES || 53
+
+export const IS_NEWSLETTER_ENABLED = false

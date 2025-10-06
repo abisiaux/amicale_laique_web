@@ -3,10 +3,10 @@ import EventCarousel from '@components/EventCarousel.tsx'
 import WaveCard from '@components/WaveCard.tsx'
 import { Envelope } from '@phosphor-icons/react'
 import {
-  ADHESION_URL,
+  ADHESION_URL, IS_NEWSLETTER_ENABLED,
   NB_AMICALISTES,
   NB_EVENTS,
-  NB_STUDENTS,
+  NB_KIDS,
 } from '@services/config.ts'
 import { sendToHubSpot } from '@services/hubspot.ts'
 import { getProchainsEvenements } from '@services/strapi.ts'
@@ -16,7 +16,6 @@ import toast from 'react-hot-toast'
 export default function Home() {
   const [evenements, setEvenements] = useState([])
   const [hasSubscribeNewsletter, setHasSubscribeNewsletter] = useState(false)
-
   const newsletterSubmitButton = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
@@ -26,7 +25,7 @@ export default function Home() {
   const handleNewsletterSubmit = async (e: FormEvent) => {
     e.preventDefault()
     const emailInput = e.currentTarget.querySelector(
-      'input[type="email"]'
+      'input[type="email"]',
     ) as HTMLInputElement
     const email = emailInput?.value
 
@@ -37,7 +36,7 @@ export default function Home() {
         setHasSubscribeNewsletter(true)
       } catch (error) {
         toast.error(
-          'Une erreur est survenue lors de l\'inscription. Veuillez réessayer.'
+          'Une erreur est survenue lors de l\'inscription. Veuillez réessayer.',
         )
         console.error('Erreur HubSpot:', error)
       }
@@ -60,19 +59,15 @@ export default function Home() {
               L’Amicale Laïque de l’école Jules Verne
             </strong>{' '}
             est une association de parents bénévoles engagés pour soutenir les
-            projets de l’école publique. Tout au long de l’année, nous
-            organisons des événements festifs et solidaires — vide-greniers,
-            bourses aux vêtements et aux jouets, marché de Noël, fête de
-            l’école, parc de structures gonflables, ventes de gâteaux ou de
-            saucissons — afin de récolter des fonds.
+            projets de l’école publique. Tout au long de l’année, elle
+            organise des événements festifs et solidaires,
+            bourses aux vêtements et aux jouets, fête de
+            l’école, ventes de gâteaux, de
+            chocolats, de fruits, de produits locaux... afin de récolter des fonds.
           </p>
           <p className="text-md mb-6 leading-relaxed">
-            Les bénéfices de ces actions sont intégralement reversés à l’école
-            pour financer des projets pédagogiques et surtout les sorties
-            scolaires :<em>Puy du Fou</em>, <em>Planète Sauvage</em>,{' '}
-            <em>Terra Botanica</em>, <em>le Moulin de l’Épinay</em>, journées
-            poney pour les maternelles, et même des séjours au{' '}
-            <em>Pouliguen</em> ou à <em>La Bourboule</em> pour les CM2 !
+            Les bénéfices de ces actions permettent de soutenir et de financer des projets pédagogiques et les sorties
+            scolaires.
           </p>
           <p className="text-md font-semibold text-center mb-6">
             👉 Rejoignez-nous ! L’association a besoin de toutes les bonnes
@@ -89,8 +84,9 @@ export default function Home() {
           </p>
         </section>
 
-        {!hasSubscribeNewsletter && (
-          <section className="relative bg-tertiary rounded-[3rem] mb-8 px-6 py-6 max-w-xl mx-auto text-center shadow-md">
+        {IS_NEWSLETTER_ENABLED && !hasSubscribeNewsletter && (
+          <section
+            className="relative bg-tertiary rounded-[3rem] mb-8 px-6 py-6 max-w-xl mx-auto text-center shadow-md">
             <div className="flex">
               <div className="flex-1 self-center">
                 <h2 className="text-xl font-bold text-primary mb-4">
@@ -124,13 +120,13 @@ export default function Home() {
 
         <section className="mb-8">
           <h2 className="text-3xl font-semibold mb-4">
-            Les chiffres de l'année
+            Quelques données
           </h2>
           <hr className="mb-6" />
           <div className="flex flex-wrap justify-center gap-6 mb-8">
-            <WaveCard title="Amicalistes engagés" number={NB_AMICALISTES} />
-            <WaveCard title="Evénements organisés" number={NB_EVENTS} />
-            <WaveCard title="Enfants" number={NB_STUDENTS} />
+            <WaveCard title="Enfants scolarisés" number={NB_KIDS} />
+            <WaveCard title="Membres engagés" number={NB_AMICALISTES} />
+            <WaveCard title="Evénements annuels" number={NB_EVENTS} />
           </div>
         </section>
       </div>

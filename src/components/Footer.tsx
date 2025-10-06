@@ -10,10 +10,10 @@ export default function Footer() {
             <p className="font-bold">Amicale Laïque - École Jules Verne</p>
             <p>77 allée Jules Verne, 44850 Ligné</p>
             <p>
-              <a href="mailto:contact@aljvligne.fr">contact@aljvligne.fr</a>
+              <a href="mailto:contact@aljvligne.fr"><span className="text-(--text-color) hover:text-(--secondary-color)">contact@aljvligne.fr</span></a>
             </p>
             <p>
-              <a href="tel:+33768924838">07.68.92.48.38</a>
+              <a href="tel:+33768924838"><span className="text-(--text-color) hover:text-(--secondary-color)">07.68.92.48.38</span></a>
             </p>
           </div>
           <div className="flex space-x-4">

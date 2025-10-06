@@ -13,7 +13,7 @@ export default function Header() {
       <div className="mx-auto flex h-24 max-w-screen-xl items-center gap-6 px-4">
         <a className="block" href="/">
           <span className="sr-only">Amicale Laïque Ecole Jules Verne</span>
-          <img src={logo} alt="Logo" className="h-16" />
+          <img src={logo} alt="Logo" className="h-32" />
         </a>
 
         <div className="flex flex-1 items-center justify-end md:justify-between">

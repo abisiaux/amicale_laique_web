@@ -64,11 +64,10 @@ export default function EventCarousel({ events }: Props) {
                       </span>
                         {event.date_heure_fin && (
                           <span className="align-top text-white">
-                          {' '}
-                            -{' '}
+                          {' - '}
                             {endDate.toLocaleTimeString(
                               'fr-FR',
-                              { timeStyle: hasTime(endDate) ? 'short' : undefined },
+                              { dateStyle: 'short', timeStyle: hasTime(endDate) ? 'short' : undefined },
                             )}
                         </span>
                         )}

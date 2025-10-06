@@ -91,7 +91,7 @@ export default function EventCarousel({ events }: Props) {
                           label={event.titre_bouton || 'En savoir plus'}
                           onClick={() => {
                             if (event.lien_bouton) {
-                              navigate(event.lien_bouton)
+                              window.open(event.lien_bouton, '_blank')
                             } else if (event.actualite) {
                               navigate(`/actualites/${event.actualite.documentId}`)
                             }

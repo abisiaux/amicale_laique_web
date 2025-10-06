@@ -1,4 +1,4 @@
-import logo from '@assets/logo.jpg'
+import logo from '@assets/logo.webp'
 import { ADHESION_URL } from '@services/config.ts'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'

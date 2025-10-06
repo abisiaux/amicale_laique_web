@@ -19,6 +19,6 @@ export const HUBSPOT_FORM_ID = import.meta.env.VITE_HUBSPOT_FORM_ID
 export const HUBSPOT_PORTAL_ID = import.meta.env.VITE_HUBSPOT_PORTAL_ID
 
 export const NB_ACTUALITE_PER_PAGE = 6
-export const NB_STUDENTS = 352
+export const NB_STUDENTS = 320
 export const NB_EVENTS = 10
 export const NB_AMICALISTES = 12

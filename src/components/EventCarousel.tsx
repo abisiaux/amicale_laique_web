@@ -59,17 +59,16 @@ export default function EventCarousel({ events }: Props) {
                         <Calendar
                           className="inline text-tertiary pr-2"
                           size={24}
-                        />{' '}
+                        />
                         <span className="align-top text-white">
-                        {' '}
                           {startDate.toLocaleString(
                             'fr-FR',
                             { dateStyle: 'short', timeStyle: hasTime(startDate) ? 'short' : undefined },
                           )}
                       </span>
                         {event.date_heure_fin && (
-                          <span className="align-top text-white">
-                          {' - '}
+                          <span className="pl-1 align-top text-white">
+                          {'- '}
                             {endDate.toLocaleString(
                               'fr-FR',
                               { dateStyle: !isSameDay(startDate, endDate) ? 'short' : undefined, timeStyle: hasTime(endDate) ? 'short' : undefined },
@@ -78,7 +77,7 @@ export default function EventCarousel({ events }: Props) {
                         )}
                       </div>
                       <div className="flex">
-                        <MapPin className="inline text-tertiary pr-2" size={24} />{' '}
+                        <MapPin className="inline text-tertiary pr-2" size={24} />
                         <span className="align-top text-white">{event.lieu}</span>
                       </div>
                     </div>

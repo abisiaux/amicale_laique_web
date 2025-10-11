@@ -1,7 +1,12 @@
 import axios from 'axios'
 import toast from 'react-hot-toast'
 
-import { API_TOKEN, API_URL, NB_ACTUALITE_PER_PAGE } from './config'
+import {
+  API_TOKEN,
+  API_URL,
+  NB_ACTUALITE_PER_PAGE,
+  NB_PV_PER_PAGE,
+} from './config'
 
 const strapi = axios.create({
   baseURL: API_URL,
@@ -11,16 +16,16 @@ const strapi = axios.create({
 })
 
 const handleError = (error: unknown) => {
-  console.error('Une erreur est survenue lors de l\'appel à l\'api', error)
+  console.error("Une erreur est survenue lors de l'appel à l'api", error)
   toast.error(
-          'Une erreur est survenue, veuillez contacter l\'administrateur du site.'
-      )
+    "Une erreur est survenue, veuillez contacter l'administrateur du site."
+  )
 }
 
-export const getProcesVerbaux = async () => {
+export const getProcesVerbaux = async (currentPage: number = 1) => {
   try {
     const response = await strapi.get(
-      '/api/proces-verbaux?sort=date:desc&populate[compte_rendu][fields]=url'
+      `/api/proces-verbaux?sort=date:desc&pagination[page]=${currentPage}&pagination[pageSize]=${NB_PV_PER_PAGE}&populate[compte_rendu][fields]=url`
     )
     return response.data
   } catch (error) {
@@ -43,7 +48,9 @@ export const getProchainsEvenements = async () => {
 
 export const getMembres = async () => {
   try {
-    const response = await strapi.get('/api/membres?sort=position:asc&populate[photo][fields]=url')
+    const response = await strapi.get(
+      '/api/membres?sort=position:asc&populate[photo][fields]=url'
+    )
     return response.data.data
   } catch (error) {
     handleError(error)
@@ -89,7 +96,9 @@ export const getServices = async () => {
 
 export const getService = async (documentId: string) => {
   try {
-    const response = await strapi.get(`/api/services/${documentId}?populate[thumbnail][fields]=url`)
+    const response = await strapi.get(
+      `/api/services/${documentId}?populate[thumbnail][fields]=url`
+    )
     return response.data.data
   } catch (error) {
     handleError(error)

@@ -64,7 +64,7 @@ export default function EventCarousel({ events }: Props) {
                         {event.titre}
                       </h2>
 
-                      <div className="flex flex-col xl:flex-row gap-2 mb-4 items-center lg:items-start">
+                      <div className="flex flex-col xl:flex-row gap-2 mb-4 items-start">
                         <div className="flex">
                           <Calendar
                             className="inline text-tertiary pr-2"

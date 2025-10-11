@@ -3,7 +3,8 @@ import EventCarousel from '@components/EventCarousel.tsx'
 import WaveCard from '@components/WaveCard.tsx'
 import { Envelope } from '@phosphor-icons/react'
 import {
-  ADHESION_URL, IS_NEWSLETTER_ENABLED,
+  ADHESION_URL,
+  IS_NEWSLETTER_ENABLED,
   NB_AMICALISTES,
   NB_EVENTS,
   NB_KIDS,
@@ -25,7 +26,7 @@ export default function Home() {
   const handleNewsletterSubmit = async (e: FormEvent) => {
     e.preventDefault()
     const emailInput = e.currentTarget.querySelector(
-      'input[type="email"]',
+      'input[type="email"]'
     ) as HTMLInputElement
     const email = emailInput?.value
 
@@ -36,7 +37,7 @@ export default function Home() {
         setHasSubscribeNewsletter(true)
       } catch (error) {
         toast.error(
-          'Une erreur est survenue lors de l\'inscription. Veuillez réessayer.',
+          "Une erreur est survenue lors de l'inscription. Veuillez réessayer."
         )
         console.error('Erreur HubSpot:', error)
       }
@@ -45,7 +46,7 @@ export default function Home() {
 
   return (
     <>
-      <div className="bg-primary h-70 md:h-90">
+      <div className="bg-primary h-80 md:h-90">
         <EventCarousel events={evenements} />
       </div>
 
@@ -59,15 +60,14 @@ export default function Home() {
               L’Amicale Laïque de l’école Jules Verne
             </strong>{' '}
             est une association de parents bénévoles engagés pour soutenir les
-            projets de l’école publique. Tout au long de l’année, elle
-            organise des événements festifs et solidaires,
-            bourses aux vêtements et aux jouets, fête de
-            l’école, ventes de gâteaux, de
-            chocolats, de fruits, de produits locaux... afin de récolter des fonds.
+            projets de l’école publique. Tout au long de l’année, elle organise
+            des événements festifs et solidaires, bourses aux vêtements et aux
+            jouets, fête de l’école, ventes de gâteaux, de chocolats, de fruits,
+            de produits locaux... afin de récolter des fonds.
           </p>
           <p className="text-md mb-6 leading-relaxed">
-            Les bénéfices de ces actions permettent de soutenir et de financer des projets pédagogiques et les sorties
-            scolaires.
+            Les bénéfices de ces actions permettent de soutenir et de financer
+            des projets pédagogiques et les sorties scolaires.
           </p>
           <p className="text-md font-semibold text-center mb-6">
             👉 Rejoignez-nous ! L’association a besoin de toutes les bonnes
@@ -85,8 +85,7 @@ export default function Home() {
         </section>
 
         {IS_NEWSLETTER_ENABLED && !hasSubscribeNewsletter && (
-          <section
-            className="relative bg-tertiary rounded-[3rem] mb-8 px-6 py-6 max-w-xl mx-auto text-center shadow-md">
+          <section className="relative bg-tertiary rounded-[3rem] mb-8 px-6 py-6 max-w-xl mx-auto text-center shadow-md">
             <div className="flex">
               <div className="flex-1 self-center">
                 <h2 className="text-xl font-bold text-primary mb-4">
@@ -119,9 +118,7 @@ export default function Home() {
         )}
 
         <section className="mb-8">
-          <h2 className="text-3xl font-semibold mb-4">
-            Quelques données
-          </h2>
+          <h2 className="text-3xl font-semibold mb-4">Quelques données</h2>
           <hr className="mb-6" />
           <div className="flex flex-wrap justify-center gap-6 mb-8">
             <WaveCard title="Enfants scolarisés" number={NB_KIDS} />

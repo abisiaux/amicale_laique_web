@@ -50,7 +50,20 @@ export default function EventCarousel({ events }: Props) {
           return (
             <SwiperSlide key={event.id} className="h-full ">
               <div className="flex h-full">
-                <div className="flex flex-grow bg-carousel rounded-2xl mx-10 lg:mx-20 my-10">
+                <div
+                  className="
+    relative flex flex-grow rounded-2xl mx-10 lg:mx-20 my-10
+    bg-carousel
+    bg-cover bg-center
+    lg:bg-none"
+                >
+                  <div
+                    className="absolute inset-0 bg-cover bg-center rounded-2xl lg:hidden"
+                    style={{
+                      backgroundImage: `url(${event.thumbnail.url})`,
+                    }}
+                  />
+                  <div className="absolute inset-0 bg-black/60 rounded-2xl lg:hidden" />
                   <div className="hidden lg:flex items-center">
                     <img
                       src={event.thumbnail.url}
@@ -58,13 +71,13 @@ export default function EventCarousel({ events }: Props) {
                       className="h-full pl-5 py-5 rounded-l-2xl object-cover"
                     />
                   </div>
-                  <div className="flex-1 flex-grow py-2 lg:py-5 px-2 lg:px-5 text-primary items-center">
+                  <div className="relative flex-1 flex-grow py-2 lg:py-5 px-2 lg:px-5 text-primary items-center">
                     <div className="h-full px-2 py-2">
-                      <h2 className="text-center lg:text-left text-2xl lg:text-4xl font-semibold mb-2 text-secondary">
+                      <h2 className="text-center lg:text-left text-2xl md:text-3xl lg:text-4xl font-semibold mb-2 text-secondary">
                         {event.titre}
                       </h2>
 
-                      <div className="flex flex-col xl:flex-row gap-2 mb-4 items-start">
+                      <div className="flex flex-col xl:flex-row gap-2 mb-4 items-center lg:items-start">
                         <div className="flex">
                           <Calendar
                             className="inline text-tertiary pr-2"
@@ -96,18 +109,20 @@ export default function EventCarousel({ events }: Props) {
                             </>
                           )}
                         </div>
-                        <div className="flex">
-                          <MapPin
-                            className="inline text-tertiary pr-2"
-                            size={24}
-                          />
-                          <span className="align-top text-white">
-                            {event.lieu}
-                          </span>
-                        </div>
+                        {event.lieu && (
+                          <div className="flex">
+                            <MapPin
+                              className="inline text-tertiary pr-2"
+                              size={24}
+                            />
+                            <span className="align-top text-white">
+                              {event.lieu}
+                            </span>
+                          </div>
+                        )}
                       </div>
 
-                      <div className="hidden md:block text-center lg:text-left">
+                      <div className="text-center lg:text-left">
                         <p className="md:max-h-20 text-sm mb-2 leading-relaxed text-white multi-truncate">
                           {event.description}
                         </p>

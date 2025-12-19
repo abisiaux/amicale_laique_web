@@ -1,10 +1,18 @@
 import axios from 'axios'
 import toast from 'react-hot-toast'
 
-import { NB_ACTUALITE_PER_PAGE, NB_PV_PER_PAGE } from './config'
+import {
+  API_TOKEN,
+  API_URL,
+  NB_ACTUALITE_PER_PAGE,
+  NB_PV_PER_PAGE,
+} from './config'
 
 const strapi = axios.create({
-  baseURL: '/api/strapi',
+  baseURL: API_URL,
+  headers: {
+    Authorization: `Bearer ${API_TOKEN}`,
+  },
 })
 
 const handleError = (error: unknown) => {
@@ -17,7 +25,7 @@ const handleError = (error: unknown) => {
 export const getProcesVerbaux = async (currentPage: number = 1) => {
   try {
     const response = await strapi.get(
-      `proces-verbaux?sort=date:desc&pagination[page]=${currentPage}&pagination[pageSize]=${NB_PV_PER_PAGE}&populate[compte_rendu][fields]=url`
+      `/api/proces-verbaux?sort=date:desc&pagination[page]=${currentPage}&pagination[pageSize]=${NB_PV_PER_PAGE}&populate[compte_rendu][fields]=url`
     )
     return response.data
   } catch (error) {
@@ -29,7 +37,7 @@ export const getProcesVerbaux = async (currentPage: number = 1) => {
 export const getProchainsEvenements = async () => {
   try {
     const response = await strapi.get(
-      'evenements?sort=date_heure_debut:asc&pagination[limit]=4&populate[thumbnail][fields]=url&populate[actualite][fields]=documentId'
+      '/api/evenements?sort=date_heure_debut:asc&pagination[limit]=4&populate[thumbnail][fields]=url&populate[actualite][fields]=documentId'
     )
     return response.data.data
   } catch (error) {
@@ -41,7 +49,7 @@ export const getProchainsEvenements = async () => {
 export const getMembres = async () => {
   try {
     const response = await strapi.get(
-      'membres?sort=position:asc&populate[photo][fields]=url'
+      '/api/membres?sort=position:asc&populate[photo][fields]=url'
     )
     return response.data.data
   } catch (error) {
@@ -53,7 +61,7 @@ export const getMembres = async () => {
 export const getActualite = async (documentId: string) => {
   try {
     const response = await strapi.get(
-      `actualites/${documentId}?populate[thumbnail][fields]=url`
+      `/api/actualites/${documentId}?populate[thumbnail][fields]=url`
     )
     return response.data.data
   } catch (error) {
@@ -65,7 +73,7 @@ export const getActualite = async (documentId: string) => {
 export const getActualites = async (currentPage: number = 1) => {
   try {
     const response = await strapi.get(
-      `actualites?sort=publishedAt:desc&pagination[page]=${currentPage}&pagination[pageSize]=${NB_ACTUALITE_PER_PAGE}&populate[thumbnail][fields]=url`
+      `/api/actualites?sort=publishedAt:desc&pagination[page]=${currentPage}&pagination[pageSize]=${NB_ACTUALITE_PER_PAGE}&populate[thumbnail][fields]=url`
     )
     return response.data
   } catch (error) {
@@ -77,7 +85,7 @@ export const getActualites = async (currentPage: number = 1) => {
 export const getServices = async () => {
   try {
     const response = await strapi.get(
-      'services?sort=publishedAt:desc&populate[thumbnail][fields]=url'
+      '/api/services?sort=publishedAt:desc&populate[thumbnail][fields]=url'
     )
     return response.data
   } catch (error) {
@@ -89,7 +97,7 @@ export const getServices = async () => {
 export const getService = async (documentId: string) => {
   try {
     const response = await strapi.get(
-      `services/${documentId}?populate[thumbnail][fields]=url`
+      `/api/services/${documentId}?populate[thumbnail][fields]=url`
     )
     return response.data.data
   } catch (error) {

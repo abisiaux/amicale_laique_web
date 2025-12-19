@@ -1,3 +1,5 @@
+export const API_URL = import.meta.env.VITE_STRAPI_URL
+export const API_TOKEN = import.meta.env.VITE_STRAPI_TOKEN
 export const RECAPTCHA_KEY = import.meta.env.VITE_CAPTCHA_SITE_KEY
 export const PLUNK_API_KEY = import.meta.env.VITE_PLUNK_SECRET_KEY
 

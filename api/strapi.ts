@@ -7,8 +7,6 @@ const STRAPI_URL = process.env.STRAPI_URL!
 const STRAPI_TOKEN = process.env.STRAPI_TOKEN!
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
-  console.log(req.url, req.query)
-
   if (req.method !== 'GET') {
     return res.status(405).end()
   }

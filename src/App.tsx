@@ -1,5 +1,6 @@
 import ActualiteDetail from '@pages/ActualiteDetail.tsx'
 import Actualites from '@pages/Actualites.tsx'
+import Administration from '@pages/Administration.tsx'
 import APropos from '@pages/APropos.tsx'
 import Contact from '@pages/Contact'
 import Home from '@pages/Home'
@@ -24,6 +25,7 @@ function App() {
           <Route path="/services" element={<Services />} />
           <Route path="/actualites/:id" element={<ActualiteDetail />} />
           <Route path="/services/:id" element={<ServiceDetail />} />
+          <Route path="/admin" element={<Administration />} />
         </Routes>
         <div>
           <Toaster position="bottom-center" reverseOrder={false} />
